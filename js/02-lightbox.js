@@ -6,8 +6,6 @@ console.log(galleryItems);
 const list = document.querySelector(".gallery");
 // adding to html
 list.insertAdjacentHTML("beforeend", createMarkup(galleryItems));
-// delegating
-list.addEventListener("click", handleClick);
 
 // creating markup
 function createMarkup(arr) {
@@ -19,7 +17,6 @@ function createMarkup(arr) {
     <img
       class="gallery__image"
       src="${preview}"
-      data-source="${original}"
       alt="${description}"
     />
   </a>
@@ -28,3 +25,8 @@ function createMarkup(arr) {
     )
     .join("");
 }
+
+let gallery = new SimpleLightbox(".gallery a", {
+  captionsData: "alt",
+  captionDelay: 250,
+});
